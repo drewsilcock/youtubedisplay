@@ -44,6 +44,10 @@ function makeGetRequest(url, success, error) {
 // This is being run async anyway, so let's just do it here.
 
 var videoId = getQueryParameterByName("v");
+var muteQueryParameter = getQueryParameterByName("mute");
+var shouldMute = muteQueryParameter === null ||
+                 muteQueryParameter === undefined ||
+                 muteQueryParameter !== "0";
 
 var iframeElementId = "DisplayVideo";
 var errorElementId = "ErrorDisplay";
@@ -93,7 +97,12 @@ function onYouTubeIframeAPIReady() {
     },
     events: {
       onReady: function(evt) {
-        evt.target.mute();
+        if (shouldMute) {
+          console.log("Muting video...");
+          evt.target.mute();
+        } else {
+          console.log("No-mute set in query parameter; not muting...");
+        }
       },
     },
   });

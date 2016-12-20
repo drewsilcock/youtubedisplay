@@ -1,0 +1,1 @@
+youtubedisplay.tk is a website for displaying fullscreen, autoplaying, looping and muted by default YouTube videos, as is very useful for screens dedicated to displaying content in the background.

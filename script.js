@@ -45,7 +45,12 @@ function makeGetRequest(url, success, error) {
 
 var videoId = getQueryParameterByName('v');
 
-var iframeId = 'DisplayVideo';
+var iframeElementId = 'DisplayVideo';
+var errorElementId = 'ErrorDisplay';
+
+var iframeElement = document.getElementById(iframeElementId);
+var errorElement = document.getElementById(errorElementId);
+
 var googleApiKey = 'AIzaSyBxG_Tf2uvKip5sJLaFUPEjwAx5nd-iJ88'; // Restricted to this domain.
 var videoApiUrl = 'https://www.googleapis.com/youtube/v3/videos?part=id' +
                   '&id=' + videoId +
@@ -53,21 +58,27 @@ var videoApiUrl = 'https://www.googleapis.com/youtube/v3/videos?part=id' +
 
 if (!videoId) {
   console.error("Video ID not found in URL.");
+
+  iframeElement.style.display = 'none';
+  alert("You've made a terrible mistake. The `v` parameter for the YouTube " +
+                           "video ID wasn't found in the URL.");
 }
 
 makeGetRequest(videoApiUrl, function successHandler(data) {
   if (data.items.length === 0) {
     console.error("Video ID not valid.");
+
+    alert("You've made a terrible mistake. The video ID doesn't point to a valid video.");
   }
 
   console.log("Video ID is valid.");
 }, function errorHandler() {
-  console.error("Video ID not valid.");
+  console.error("There was a problem contacting the Google YouTube API.");
 });
 
 var player;
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player(iframeId, {
+  player = new YT.Player(iframeElementId, {
     videoId: videoId,
     width: window.innerWidth,
     height: window.innerHeight,

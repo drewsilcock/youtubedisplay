@@ -1,0 +1,94 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+
+  background: black;
+}
+
+.yd-main {
+  background-image: url(https://source.unsplash.com/category/nature);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  transition: all .2s ease-in-out;
+}
+
+.yd-main.yd-fade-in {
+  opacity: 1;
+}
+
+.yd-container {
+  max-width: 768px;
+  margin: auto;
+
+  /* Vertical align. */
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.yd-headline {
+  margin-bottom: 30px;
+
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 4px black;
+}
+
+.yd-title {
+  font-size: xx-large;
+}
+
+.yd-lead {
+  font-size: x-large;
+}
+
+.yd-input {
+  margin: 30px 0;
+}
+
+.yd-icon {
+  width: 40px;
+  height: 34px;
+}
+
+.yd-submit {
+}
+
+.yd-alert {
+  margin: 30px 0;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+}
+
+.yd-alert__title {
+  font-weight: bold;
+}
+
+.yd-alert__message {
+}
+
+.yd-alert__url {
+  font-family: monospace;
+}
+
+.yd-alert__error {
+  font-family: monospace;
+  transition: opacity .2s ease-in-out;
+}
+
+.yd-alert.yd-fade-in {
+  opacity: 1;
+}

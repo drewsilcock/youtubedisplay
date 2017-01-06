@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -8,11 +8,75 @@
     <meta name="description" content="Simple fullscreen autoplay looping muted (by default) YouTube wrapper.">
     <title>YouTube Display</title>
 
+    <!-- Style Sheets -->
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- JavaScript Scripts -->
+
     <script async src="https://www.youtube.com/iframe_api"></script>
-    <script async src="script.js"></script>
+
+    <script async src="https://use.fontawesome.com/6f6b9169f0.js"></script>
+
+    <script defer
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+
+    <script defer
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script defer src="js/main.js"></script>
   </head>
-  <body style="margin: 0; overflow: hidden;">
+  <body>
+    <main id="yd-js-main" class="yd-main">
+      <div class="yd-container">
+        <div class="yd-headline">
+          <div class="yd-title">
+            YouTube Display
+          </div>
+
+          <div class="yd-lead">
+            Generate a link to display looping, autoplaying, muted YouTube videos.
+          </div>
+        </div>
+
+        <div class="yd-input input-group">
+          <input id="yd-js-input" type="text" class="form-control" placeholder="Enter YouTube Video URL">
+          <span class="input-group-btn">
+            <button id="yd-js-fullscreen" class="yd-icon yd-js-tooltip btn btn-default"
+                    type="button" data-enabled="false"
+                    data-animation="false" data-placement="top" title="Fullscreen will be enabled.">
+              <i class="fa fa-window-restore"></i>
+            </button>
+            <button id="yd-js-mute" class="yd-icon yd-js-tooltip btn btn-default"
+                    type="button" data-muted="true"
+                    data-animation="false" data-placement="top" title="Sound will be disabled.">
+              <i class="fa fa-volume-off"></i>
+            </button>
+            <button id="yd-js-submit" class="yd-submit btn btn-default" type="button">
+              Get Display URL
+            </button>
+          </span>
+        </div>
+
+        <div id="yd-js-alert" class="yd-alert alert alert-success" role="alert">
+          <span id="yd-js-alert__title" class="yd-alert__title">Success</span>
+          <span id="yd-js-alert__message" class="yd-alert__message">Your display URL is: </span>
+          <a id="yd-js-alert__url" class="yd-alert__url" href="#"
+             target="_blank" rel="noreferrer noopener"></a>
+          <span id="yd-js-alert__error" class="yd-alert__error">There was a problem generating the display URL.</span>
+        </div>
+      </div>
+    </main>
+
     <div id="DisplayVideo"></div>
-    <div id="ErrorDisplay"></div>
   </body>
 </html>

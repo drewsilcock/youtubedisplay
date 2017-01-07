@@ -16,6 +16,15 @@
       overflow: hidden;
       background: black;
     }
+
+    .yd-fullscreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
     </style>
 
     <!-- JavaScript Scripts -->
@@ -24,6 +33,7 @@
     <script async src="../js/display.js"></script>
   </head>
   <body>
+    <button type="button" id="yd-js-fullscreen" class="yd-fullscreen"></button>
     <div id="yd-js-display-video" class="yd-display-video"></div>
   </body>
 </html>

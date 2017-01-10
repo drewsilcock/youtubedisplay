@@ -134,6 +134,8 @@ function onSubmitClick() {
   var $alertUrl = $('#yd-js-alert__url');
   var $alertError = $('#yd-js-alert__error');
 
+  var $info = $('#yd-js-info');
+
   var successTitle = 'Success';
   var successMessage = 'Your display URL is: ';
 
@@ -153,6 +155,8 @@ function onSubmitClick() {
     $alertUrl.attr('href', displayUrl);
 
     $alertError.text('');
+
+    $info.addClass('yd-fade-in');
   }, function errorHandler(errorMessage) {
     $alert.addClass('yd-fade-in');
 
@@ -166,6 +170,8 @@ function onSubmitClick() {
     $alertUrl.attr('href', '#');
 
     $alertError.text(errorMessage);
+
+    $info.removeClass('yd-fade-in');
   });
 }
 

@@ -52,9 +52,9 @@
           <input id="yd-js-input" type="text" class="form-control" placeholder="Enter YouTube Video URL">
           <span class="input-group-btn">
             <button id="yd-js-fullscreen" class="yd-icon yd-js-tooltip btn btn-default"
-                    type="button" data-enabled="false"
-                    data-animation="false" data-placement="top" title="Fullscreen will be enabled.">
-              <i class="fa fa-window-restore"></i>
+                    type="button" data-enabled="true"
+                    data-animation="false" data-placement="top" title="Easy fullscreen will be enabled.">
+              <i class="fa fa-arrows-alt"></i>
             </button>
             <button id="yd-js-mute" class="yd-icon yd-js-tooltip btn btn-default"
                     type="button" data-muted="true"
@@ -67,24 +67,26 @@
           </span>
         </div>
 
-        <div id="yd-js-alert" class="yd-alert alert alert-success" role="alert">
-          <div id="yd-js-alert__title" class="yd-alert__title">Success</div>
-          <div class="yd-alert__content">
-            <span id="yd-js-alert__message" class="yd-alert__message">Your display URL is: </span>
-            <a id="yd-js-alert__url" class="yd-alert__url" href="#"
-               target="_blank" rel="noreferrer noopener"></a>
-            <span id="yd-js-alert__error" class="yd-alert__error">There was a problem generating the display URL.</span>
+        <div class="yd-alerts__container">
+          <div id="yd-js-alert" class="yd-alert alert alert-success" role="alert">
+            <div id="yd-js-alert__title" class="yd-alert__title">Success</div>
+            <div class="yd-alert__content">
+              <span id="yd-js-alert__message" class="yd-alert__message">Your display URL is: </span>
+              <a id="yd-js-alert__url" class="yd-alert__url" href="#"
+                 target="_blank" rel="noreferrer noopener"></a>
+              <span id="yd-js-alert__error" class="yd-alert__error">There was a problem generating the display URL.</span>
+            </div>
           </div>
-        </div>
 
-        <div id="yd-js-info" class="yd-alert alert alert-info" role="alert">
-          <div class="yd-alert__title">Info</div>
-          <div class="yd-alert__content">
-            <span class="yd-alert__message">
-              Security restrictions prevent a page going fullscreen without user
-              interaction. To go fullscreen, click anywhere on the page. To exit
-              fullscreen, press the Escape key.
-            </span>
+          <div id="yd-js-info" class="yd-info alert alert-info" role="alert">
+            <div class="yd-alert__title">Info</div>
+            <div class="yd-alert__content">
+              <span class="yd-alert__message">
+                Security restrictions prevent a page going fullscreen without user
+                interaction. To go fullscreen, click anywhere on the page. To exit
+                fullscreen, press the Escape key.
+              </span>
+            </div>
           </div>
         </div>
       </div>

@@ -178,9 +178,16 @@ function onSubmitClick() {
 function onFullscreenClick() {
   var $fullscreenButton = $('#yd-js-fullscreen');
   var $fullscreenIcon = $fullscreenButton.find('.fa');
+  var $fullscreenInfo = $('#yd-js-info').find('.yd-alert__message');
 
-  var enabledTooltip = 'Fullscreen will be enabled.';
-  var disabledTooltip = 'Fullscreen will be disabled.';
+  var enabledTooltip = 'Easy fullscreen will be enabled.';
+  var disabledTooltip = 'Easy fullscreen will be disabled.';
+
+  var enabledInfo = 'Security restrictions prevent a page going fullscreen ' +
+                       'without user interaction. To go fullscreen, click ' +
+                       'anywhere on the page. To exit fullscreen, press the Escape key.';
+  var disabledInfo = 'You can still go fullscreen by double-clicking on ' +
+                        'the video or pressing \'F\'.';
 
   var $alertUrl = $('#yd-js-alert__url');
   var alertUrlExists = $alertUrl.text() !== '';
@@ -191,6 +198,8 @@ function onFullscreenClick() {
 
     $fullscreenIcon.removeClass('fa-arrows-alt');
     $fullscreenIcon.addClass('fa-window-restore');
+
+    $fullscreenInfo.text(disabledInfo);
 
     if (alertUrlExists) {
       var newUrl = $alertUrl.text().replace('&fullscreen=1', '');
@@ -203,6 +212,8 @@ function onFullscreenClick() {
 
     $fullscreenIcon.removeClass('fa-window-restore');
     $fullscreenIcon.addClass('fa-arrows-alt');
+
+    $fullscreenInfo.text(enabledInfo);
 
     if (alertUrlExists) {
       var newUrl = $alertUrl.text() + '&fullscreen=1';

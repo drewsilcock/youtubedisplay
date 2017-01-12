@@ -67,10 +67,21 @@ body {
 .yd-submit {
 }
 
+.yd-alerts__container {
+  height: 200px;
+}
+
 .yd-alert {
   margin: 30px 0;
   transition: all .2s ease-in-out;
   opacity: 0;
+  display: none;
+}
+
+.yd-info {
+  margin: 30px 0;
+  transition: all .2s ease-in-out;
+  height: 100px;
 }
 
 .yd-alert__title {
@@ -78,6 +89,7 @@ body {
 }
 
 .yd-alert__content {
+  margin-top: 5px;
 }
 
 .yd-alert__message {

@@ -74,7 +74,7 @@ body {
 .yd-alert {
   margin: 30px 0;
   transition: all .2s ease-in-out;
-  opacity: 0;
+  /*opacity: 0;*/
   display: none;
 }
 

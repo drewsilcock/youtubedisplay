@@ -134,8 +134,6 @@ function onSubmitClick() {
   var $alertUrl = $('#yd-js-alert__url');
   var $alertError = $('#yd-js-alert__error');
 
-  var $info = $('#yd-js-info');
-
   var successTitle = 'Success';
   var successMessage = 'Your display URL is: ';
 
@@ -143,8 +141,6 @@ function onSubmitClick() {
   var failureMessage = 'Unable to get YouTube video from URL: ';
 
   parseUrlForYouTubeVideo(inputUrl, function successHandler(displayUrl) {
-    $alert.addClass('yd-fade-in');
-
     $alert.removeClass('alert-danger');
     $alert.addClass('alert-success');
 
@@ -156,10 +152,8 @@ function onSubmitClick() {
 
     $alertError.text('');
 
-    $info.addClass('yd-fade-in');
+    $alert.fadeIn();
   }, function errorHandler(errorMessage) {
-    $alert.addClass('yd-fade-in');
-
     $alert.removeClass('alert-success');
     $alert.addClass('alert-danger');
 
@@ -171,7 +165,7 @@ function onSubmitClick() {
 
     $alertError.text(errorMessage);
 
-    $info.removeClass('yd-fade-in');
+    $alert.fadeIn();
   });
 }
 

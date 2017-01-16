@@ -31,9 +31,9 @@ body {
   max-width: 768px;
   margin: auto;
 
-  /* Vertical align. */
+  /* Vertical align, with a box more space on bottom. */
   position: relative;
-  top: 50%;
+  top: 45%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -47,8 +47,38 @@ body {
   text-shadow: 0 0 4px black;
 }
 
+.yd-title__container {
+  position: relative;
+  height: 150px;
+  font-size: 100px;
+}
+
 .yd-title {
-  font-size: xx-large;
+  font-size: 100px;
+  display: inline;
+  text-shadow: none;
+  color: #de6262;
+  background-image: -webkit-linear-gradient(45deg, #de6262, #ffb88c);
+  background-image: linear-gradient(45deg, #de6262, #ffb88c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+
+  /* Makes relative to container. */
+  position: absolute;
+  left: 0;
+  text-align: center;
+}
+
+.yd-title::before {
+  content: "YouTube Display";
+  text-shadow: 0 0 4px black;
+
+  /* Makes relative to element. */
+  position: absolute;
+  left: 0;
+  z-index: -1;
 }
 
 .yd-lead {
@@ -101,9 +131,25 @@ body {
 
 .yd-alert__error {
   font-family: monospace;
-  transition: opacity .2s ease-in-out;
+  /*transition: opacity .2s ease-in-out;*/
 }
 
 .yd-alert.yd-fade-in {
-  opacity: 1;
+  /*opacity: 1;*/
+}
+
+@keyframes fadeInFromAbove {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.yd-fade-in-from-above {
+  animation-name: fadeInFromAbove;
 }

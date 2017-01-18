@@ -181,7 +181,7 @@ function onFullscreenClick() {
                        'without user interaction. To go fullscreen, click ' +
                        'anywhere on the page. To exit fullscreen, press the Escape key.';
   var disabledInfo = 'You can still go fullscreen by double-clicking on ' +
-                        'the video or pressing \'F\'.';
+                        'the video or pressing <F11>.';
 
   var $alertUrl = $('#yd-js-alert__url');
   var alertUrlExists = $alertUrl.text() !== '';

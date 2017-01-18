@@ -81,12 +81,24 @@ function activateFullscreen(evt) {
     }
   }
 
-  // TODO: Hide the fullscreen button (display: none) so that the user can
-  // interact with the YouTube video as normal.
+  var fullscreenButton = document.getElementById('yd-js-fullscreen');
+  fullscreenButton.style.display = 'none';
 }
 
-// TODO: Hook into un-fullscreen event to un-hide the fullscreen button if user
-// wants to go back into fullscreen.
+function onFullscreenChange(evt) {
+  var fullscreenButton = document.getElementById('yd-js-fullscreen');
+
+  if (document.fullscreenElement ||
+      document.mozFullScreenElement ||
+      document.webkitFullscreenElement ||
+      document.msFullscreenElement) {
+    // We've just gone fullscreen; hide invisible fullscreen button.
+    fullscreenButton.display.style.display = 'none';
+  } else {
+    // We've just exited fullscreen; show invisible fullscreen button.
+    fullscreenButton.display.style.display = 'block';
+  }
+}
 
 function initialiseFullscreenButton() {
   var fullscreenQueryParameter = getQueryParameterByName('fullscreen');
@@ -98,6 +110,10 @@ function initialiseFullscreenButton() {
     fullscreenButton.remove();
   } else {
     fullscreenButton.addEventListener('click', activateFullscreen);
+
+    // Currently still prefixed.
+    var fullscreenEventNames = 'webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange';
+    document.addEventListener(fullscreenEventNames, onFullscreenChange);
   }
 }
 

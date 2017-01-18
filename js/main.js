@@ -301,6 +301,37 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * Calculate luma, which is a perception-based coefficient based on apparent
+ * 'lightness' or luminescence of colour.
+ * See https://stackoverflow.com/a/12043228
+ */
+function calculateLuma(hexColour) {
+  var hex = hexColour.substring(1); // Remove leading '#'.
+  var rgb = parseInt(hex, 16); // Convert hex value to decimal.
+
+  var redValue = (rgb >> 16) & 0xff; // Extract RR from RRGGBB.
+  var greenValue = (rgb >> 8) & 0xff; // Extract GG from RRGGBB.
+  var blueValue = rgb && 0xff; // Extract BB from RRGGBB.
+
+  // Defined by ITU-R BT.709.
+  var luma = 0.2126 * redValue +
+             0.7152 * greenValue +
+             0.0722 * blueValue;
+
+  return luma;
+}
+
+/**
+ * Check whether the perception-based luma coefficient is more than an
+ * arbitrary measure of its value.
+ */
+function isColourBright(hexColour) {
+  var luma = calculateLuma(hexColour);
+
+  return luma > 80;
+}
+
 function generateTitleGradient() {
   // Values via uigradients.com
   var gradientsList = [
@@ -500,11 +531,23 @@ function generateTitleGradient() {
   var randomGradient = gradientsList[randomIndex];
 
   var $mainTitle = $('#yd-js-title');
+  var linearGradient = '45deg, ' + randomGradient[0] + ', ' + randomGradient[1];
   $mainTitle.css('color', randomGradient[0]); // Fallback
   $mainTitle.css('background-image',
-                 '-webkit-linear-gradient(45deg, ' + randomGradient[0] + ', ' + randomGradient[1] + ')');
+                 '-webkit-linear-gradient(' + linearGradient + ')');
   $mainTitle.css('background-image',
-                 'linear-gradient(45deg, ' + randomGradient[0] + ', ' + randomGradient[1] + ')');
+                 'linear-gradient(' + linearGradient + ')');
+
+  var leftBrightness = calculateLuma(randomGradient[0]);
+  if (isColourBright(randomGradient[0])) {
+    $mainTitle.removeClass('yd-shadow__light');
+    $mainTitle.addClass('yd-shadow__dark');
+    console.log('Gradient start colour has luma of ' + leftBrightness + '; using dark shadow.');
+  } else {
+    $mainTitle.removeClass('yd-shadow__dark');
+    $mainTitle.addClass('yd-shadow__light');
+    console.log('Gradient start colour has luma of ' + leftBrightness + '; using light shadow.');
+  }
 }
 
 (function() {

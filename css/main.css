@@ -73,12 +73,19 @@ body {
 
 .yd-title::before {
   content: "YouTube Display";
-  text-shadow: 0 0 4px black;
 
   /* Makes relative to element. */
   position: absolute;
   left: 0;
   z-index: -1;
+}
+
+.yd-shadow__dark::before {
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.yd-shadow__light::before {
+  text-shadow: 0 0 4px rgba(256, 256, 256, 0.5);
 }
 
 .yd-lead {

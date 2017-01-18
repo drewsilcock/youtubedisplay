@@ -80,7 +80,13 @@ function activateFullscreen(evt) {
       elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
     }
   }
+
+  // TODO: Hide the fullscreen button (display: none) so that the user can
+  // interact with the YouTube video as normal.
 }
+
+// TODO: Hook into un-fullscreen event to un-hide the fullscreen button if user
+// wants to go back into fullscreen.
 
 function initialiseFullscreenButton() {
   var fullscreenQueryParameter = getQueryParameterByName('fullscreen');
@@ -107,8 +113,8 @@ function initialiseVideoDisplay() {
                    muteQueryParameter === undefined ||
                    muteQueryParameter !== '0';
 
-  var iframeElementId = 'yd-js-display-video';
-  var iframeElement = document.getElementById(iframeElementId);
+  var videoElementId = 'yd-js-display-video';
+  var videoElement = document.getElementById(videoElementId);
 
   validateVideoId(videoId, function successHandler() {
     console.log('Video ID is valid.');
@@ -118,7 +124,7 @@ function initialiseVideoDisplay() {
 
   var player;
   onYouTubeIframeAPIReady = function() {
-    player = new YT.Player(iframeElementId, {
+    player = new YT.Player(videoElementId, {
       videoId: videoId,
       width: window.innerWidth,
       height: window.innerHeight,

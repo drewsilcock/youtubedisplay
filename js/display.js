@@ -80,6 +80,24 @@ function activateFullscreen(evt) {
       elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
     }
   }
+
+  var fullscreenButton = document.getElementById('yd-js-fullscreen');
+  fullscreenButton.style.display = 'none';
+}
+
+function onFullscreenChange(evt) {
+  var fullscreenButton = document.getElementById('yd-js-fullscreen');
+
+  if (document.fullscreenElement ||
+      document.mozFullScreenElement ||
+      document.webkitFullscreenElement ||
+      document.msFullscreenElement) {
+    // We've just gone fullscreen; hide invisible fullscreen button.
+    fullscreenButton.display.style.display = 'none';
+  } else {
+    // We've just exited fullscreen; show invisible fullscreen button.
+    fullscreenButton.display.style.display = 'block';
+  }
 }
 
 function initialiseFullscreenButton() {
@@ -92,6 +110,10 @@ function initialiseFullscreenButton() {
     fullscreenButton.remove();
   } else {
     fullscreenButton.addEventListener('click', activateFullscreen);
+
+    // Currently still prefixed.
+    var fullscreenEventNames = 'webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange';
+    document.addEventListener(fullscreenEventNames, onFullscreenChange);
   }
 }
 
@@ -107,8 +129,8 @@ function initialiseVideoDisplay() {
                    muteQueryParameter === undefined ||
                    muteQueryParameter !== '0';
 
-  var iframeElementId = 'yd-js-display-video';
-  var iframeElement = document.getElementById(iframeElementId);
+  var videoElementId = 'yd-js-display-video';
+  var videoElement = document.getElementById(videoElementId);
 
   validateVideoId(videoId, function successHandler() {
     console.log('Video ID is valid.');
@@ -118,7 +140,7 @@ function initialiseVideoDisplay() {
 
   var player;
   onYouTubeIframeAPIReady = function() {
-    player = new YT.Player(iframeElementId, {
+    player = new YT.Player(videoElementId, {
       videoId: videoId,
       width: window.innerWidth,
       height: window.innerHeight,

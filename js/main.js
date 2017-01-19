@@ -549,6 +549,15 @@ function generateTitleGradient() {
     $mainTitle.addClass('yd-shadow__light');
     console.log('Gradient start colour has luma of ' + leftBrightness + '; using light shadow.');
   }
+
+  console.log('%cYouTube Display', 'color: ' + randomGradient[0] + '; ' +
+                                   'background-image: -webkit-linear-gradient(' + linearGradient + '); ' +
+                                   'background-image: linear-gradient(' + linearGradient + '); ' +
+                                   '-webkit-background-clip: text; ' +
+                                   '-webkit-text-fill-color: transparent; ' +
+                                   'font-size: xx-large;');
+  console.log('%cFancy digging through the source code? Just go to https://github.com/drewsberry/youtubedisplay!',
+              'color: #3a4454; font-size: larger;');
 }
 
 (function() {

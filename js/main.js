@@ -178,10 +178,11 @@ function onFullscreenClick() {
   var disabledTooltip = 'Easy fullscreen will be disabled.';
 
   var enabledInfo = 'Security restrictions prevent a page going fullscreen ' +
-                       'without user interaction. To go fullscreen, click ' +
-                       'anywhere on the page. To exit fullscreen, press the Escape key.';
+                    'without user interaction. To go fullscreen, click ' +
+                    'anywhere on the page. To exit fullscreen, press the ' +
+                    '<Escape> key.';
   var disabledInfo = 'You can still go fullscreen by double-clicking on ' +
-                        'the video or pressing <F11>.';
+                     'the video or pressing <F11>.';
 
   var $alertUrl = $('#yd-js-alert__url');
   var alertUrlExists = $alertUrl.text() !== '';
